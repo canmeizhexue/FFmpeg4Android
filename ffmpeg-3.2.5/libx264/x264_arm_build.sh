@@ -2,18 +2,24 @@
 # https://github.com/mabeijianxi
 # mabeijianxi@gmail.com
 
-NDK=/Users/jianxi/android/sdk/ndk-bundle
+NDK=$ANDROID_NDK_ROOT
+HOST_OS=linux
+CPU=arm
+
+
+#NDK=/Users/jianxi/android/sdk/ndk-bundle
+
 
 PLATFORM=$NDK/platforms/android-14/arch-arm
-TOOLCHAIN=$NDK/toolchains/arm-linux-androideabi-4.9/prebuilt/darwin-x86_64
-PREFIX=./android/arm
+TOOLCHAIN=$NDK/toolchains/arm-linux-androideabi-4.9/prebuilt/$HOST_OS-x86_64
+PREFIX=./android/$CPU
 
 function build_one
 {
 ./configure \
 --prefix=$PREFIX \
---disable-shared \
---enable-static \
+--enable-shared \
+--disable-static \
 --disable-asm \
 --enable-pic \
 --enable-strip \

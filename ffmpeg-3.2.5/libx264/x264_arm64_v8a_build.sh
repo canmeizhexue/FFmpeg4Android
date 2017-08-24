@@ -2,18 +2,25 @@
 # https://github.com/mabeijianxi
 # mabeijianxi@gmail.com
 
-NDK=/Users/jianxi/android/sdk/ndk-bundle
+
+NDK=$ANDROID_NDK_ROOT
+HOST_OS=linux
+
+
+
+
+#NDK=/Users/jianxi/android/sdk/ndk-bundle
 
 PLATFORM=$NDK/platforms/android-21/arch-arm64/
-TOOLCHAIN=$NDK/toolchains/aarch64-linux-android-4.9/prebuilt/darwin-x86_64
+TOOLCHAIN=$NDK/toolchains/aarch64-linux-android-4.9/prebuilt/$HOST_OS-x86_64
 PREFIX=./android/arm64-v8a
 
 function build_one
 {
 ./configure \
 --prefix=$PREFIX \
---disable-shared \
---enable-static \
+--enable-shared \
+--disable-static \
 --enable-pic \
 --enable-strip \
 --host=aarch64-linux \
